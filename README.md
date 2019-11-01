@@ -4,28 +4,30 @@
 
 ### Install and update using pip:
 
-Flask
+Flask:
 ```bash
 pip install -U Flask
 ```
 
-Bootstrap 4
+Bootstrap 4:
 ```bash
 pip install Flask-Bootstrap4
 ```
 
-RAKE-NLTK
+RAKE-NLTK:
 ```bash
 pip install rake-nltk
 ```
 
-### Hosting Locally
+## Hosting
+
+#### Hosting Locally
 ```
 if __name__ == "__main__":
     app.run()
 ```
 
-### Hosting on Server
+#### Hosting on Server
 ```
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
