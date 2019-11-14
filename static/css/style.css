@@ -2,5 +2,26 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #444;
+    color: #ffffff;
+    background-color: #69797E;
   }
+
+.container-fluid {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.area {
+  background-color: #bdc3c7;
+}
+
+.btn-space {
+  margin-right: 5px;
+  margin-bottom: 20px;
+}
+
+.text-color {
+  color: black;
+}

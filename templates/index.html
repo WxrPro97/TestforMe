@@ -6,11 +6,26 @@
 {% endblock %}
 
 {% block content %}
-<div>
-    <form class="form-group" method="POST">
-        <label for="exampleFormControlTextarea1">Performance</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="review"></textarea>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-group" method="POST">
+                <label for="exampleFormControlTextarea1">The Installation Procedure?</label>
+                <textarea class="form-control area" id="exampleFormControlTextarea1" rows="3" name="installation"></textarea>
+                <br>
+                <label for="exampleFormControlTextarea1">The Performance?</label>
+                <textarea class="form-control area" id="exampleFormControlTextarea1" rows="8" name="performance"></textarea>
+                <br>
+                <label for="exampleFormControlTextarea1">The Functionality?</label>
+                <textarea class="form-control area" id="exampleFormControlTextarea1" rows="8" name="functionality"></textarea>
+                <br>
+                <label for="exampleFormControlTextarea1">The User Experience?</label>
+                <textarea class="form-control area" id="exampleFormControlTextarea1" rows="8" name="experience"></textarea>
+                <br>
+                <button class="btn btn-danger float-md-right btn-space">Cancel</button>
+                <button type="submit" class="btn btn-primary float-md-right btn-space">Submit</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}
