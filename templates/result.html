@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container-fluid">
     <div class="jumbotron">
-        <h1 class="display-4 text-color">{username}, you have scored:</h1>
+        <h1 class="display-4 text-color">{{ session.username }}, <strong>you have scored:</strong></h1>
         <hr class="my-4">
         <h4 class="text-color">Installation: {{ install_total_score }}</h4>
         <h4 class="text-color">Performance: {{ perf_total_score }}</h4>
