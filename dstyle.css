@@ -1,0 +1,48 @@
+body {
+
+    font-family: 'Montserrat', sans-serif;
+    background-color: #eee;
+
+}
+
+/* Navbar */
+.sidebar {
+    height: 100vh;
+    /* Means height of navbar will be 100% of viewpoint */
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .9)), url(images/img1.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 5px 7px 25px #999;
+    /* Box shadow Affect */
+}
+
+.bottom-border {
+    border-bottom: 1px groove #eee;
+}
+
+.sidebar-link {
+    transition: all 0.7s;
+}
+
+.sidebar-link:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        height: auto;
+    }
+
+    .top-navbar {
+        position: static;
+    }
+
+}
+
+
+
+
+/* end of Navbar */
