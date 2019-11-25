@@ -1,4 +1,4 @@
-<?php include ('server.php') ?>
+<?php include ('aserver.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@
 
 
 
-            <form action="login.php" method="post">
+            <form action="alogin.php" method="post">
               <?php include('errors.php'); ?>
               <div class="form-group">
                 <label for="Username">Username</label>
@@ -50,11 +50,11 @@
               </div>
 
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" name="login_user" type="submit"
+              <button class="btn btn-lg btn-danger btn-block text-uppercase" name="login_user" type="submit"
                 value="submit">Sign in</button>
               <hr class="my-4">
               <p>
-                Not yet a member? <a href="register.php">SignUp</a>
+                Not yet a member? <a href="aregister.php">SignUp</a>
               </p>
 
 

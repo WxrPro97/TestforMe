@@ -1,10 +1,10 @@
-<?php include ('server.php') ?>
+<?php include ('aserver.php') ?>
 <?php 
   session_start(); 
 
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
-  	header('location: login.php');
+  	header('location: alogin.php');
   }
   ?>
 
@@ -69,9 +69,9 @@
                         <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                     class="fas fa-home text-light fa-lg mr-3"></i>Dashboard</a></li>
                         <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                    class="fas fa-file-alt text-light fa-lg mr-3"></i>Test Jobs</a></li>
-                        <li class="nav-item"><a href="http://34.244.96.131/" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                    class="fas fa-vial text-light fa-lg mr-3"></i>Reviews</a></li>
+                                    class="fas fa-file-alt text-light fa-lg mr-3"></i>Test Projects</a></li>    
+                        <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                    class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics</a></li>
                         <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                     class="fas fa-inbox text-light fa-lg mr-3"></i>Notifications</a></li>
                                      <li class="nav-item" name="logout"><a href="logout.php" class="nav-link text-white p-3 mb-2 sidebar-link"><i

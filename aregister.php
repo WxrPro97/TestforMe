@@ -1,7 +1,7 @@
 
 
 
-<?php include ('server.php') ?> 
+<?php include ('aserver.php') ?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +29,7 @@
 
            
            
-            <form action="register.php" method="post">
+            <form action="aregister.php" method="post">
             
               <div class="form-group">
               <label for="Username">Username</label>
@@ -53,10 +53,10 @@
               </div>
 
             
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" name="reg_user" type="submit" value="submit">Sign up</button>
+              <button class="btn btn-lg btn-danger btn-block text-uppercase" name="reg_user" type="submit" value="submit">Sign up</button>
               <hr class="my-4">
               <a>
-              Already a member? <a href="login.php">SignIn</a>
+              Already a member? <a href="alogin.php">SignIn</a>
               </a>
               
             </form>
