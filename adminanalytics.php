@@ -67,13 +67,9 @@
                             <a href="" class="text-white"> <strong><?php echo $_SESSION['username']; ?></strong></<strong></a>
                         </div>
                         <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                    class="fas fa-home text-light fa-lg mr-3"></i>Dashboard</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                    class="fas fa-file-alt text-light fa-lg mr-3"></i>Test Projects</a></li>    
-                        <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                     class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics</a></li>
                         <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                    class="fas fa-inbox text-light fa-lg mr-3"></i>Notifications</a></li>
+                                    class="fas fa-file-alt text-light fa-lg mr-3"></i>Test Projects</a></li>    
                                      <li class="nav-item" name="logout"><a href="logout.php" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                     class="fas fa-sign-out-alt text-light fa-lg mr-3"></i>LogOut</a></li>
 
@@ -87,10 +83,10 @@
                         <!-- End of Sidebar-->
                     </div>
                     <!--Top nav Column-->
-                    <div class="col-xl-10 col-lg-9 col-md-8  ml-auto bg-dark fixed-top py-2 top-navbar">
+                    <div class="col-xl-10 col-lg-9 col-md-8  ml-auto bg-dark fixed-top py-2 top-navbar" >
                         <div class="row">
                             <div class="col-md-4">
-                                <h4 class="text-light text-uppercase mb-0">DashBoard</h4>
+                                <h4 class="text-light text-uppercase mb-0">Analytics</h4>
                             </div>
                             <div class="col-md-5">
                                 <form>

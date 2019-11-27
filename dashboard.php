@@ -70,10 +70,6 @@
                                     class="fas fa-home text-light fa-lg mr-3"></i>Dashboard</a></li>
                         <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                     class="fas fa-file-alt text-light fa-lg mr-3"></i>Test Jobs</a></li>
-                        <li class="nav-item"><a href="http://34.244.96.131/" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                    class="fas fa-vial text-light fa-lg mr-3"></i>Reviews</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                    class="fas fa-inbox text-light fa-lg mr-3"></i>Notifications</a></li>
                                      <li class="nav-item" name="logout"><a href="logout.php" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                     class="fas fa-sign-out-alt text-light fa-lg mr-3"></i>LogOut</a></li>
 
