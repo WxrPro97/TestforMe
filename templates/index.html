@@ -1,31 +1,33 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}Review{% endblock %}
+{% block title %}Login{% endblock %}
 {% block styles %}
 {{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='css/style.css')}}">
+<link rel="stylesheet" href="{{url_for('.static', filename='css/login.css')}}">
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <form class="form-group" method="POST">
-                <label for="exampleFormControlTextarea1">The Installation Procedure?</label>
-                <textarea class="form-control area" id="exampleFormControlTextarea1" rows="3" name="installation"></textarea>
-                <br>
-                <label for="exampleFormControlTextarea1">The Performance?</label>
-                <textarea class="form-control area" id="exampleFormControlTextarea1" rows="8" name="performance"></textarea>
-                <br>
-                <label for="exampleFormControlTextarea1">The Functionality?</label>
-                <textarea class="form-control area" id="exampleFormControlTextarea1" rows="8" name="functionality"></textarea>
-                <br>
-                <label for="exampleFormControlTextarea1">The User Experience?</label>
-                <textarea class="form-control area" id="exampleFormControlTextarea1" rows="8" name="experience"></textarea>
-                <br>
-                <button class="btn btn-danger float-md-right btn-space">Cancel</button>
-                <button type="submit" class="btn btn-primary float-md-right btn-space">Submit</button>
-            </form>
+<div class="login-form">
+    <form action="{{ url_for('login') }}" method="POST">
+        <h2 class="text-center">Log in</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Username" required="required" value="{{
+                request.form.username }}">
         </div>
-    </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required"
+                value="{{
+                request.form.password }}">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" value="Login">Log in</button>
+        </div>
+        <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            <a href="#" class="pull-right">Forgot Password?</a>
+        </div>
+    </form>
+    {% if error %}
+    <p class="error"><strong>Error:</strong> {{ msg }}
+        {% endif %}
 </div>
 {% endblock %}

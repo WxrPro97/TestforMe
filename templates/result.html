@@ -8,15 +8,17 @@
 {% block content %}
 <div class="container-fluid">
     <div class="jumbotron">
-        <h1 class="display-4 text-color">{{ session.username }}, <strong>you have scored:</strong></h1>
+        <h1 class="display-4 text-color">{{ username }}, <strong>you have scored:</strong></h1>
         <hr class="my-4">
+        <h4 class="text-color">You have selected: {{ choice }}</h4>
         <h4 class="text-color">Installation: {{ install_total_score }}</h4>
         <h4 class="text-color">Performance: {{ perf_total_score }}</h4>
         <h4 class="text-color">Functionality: {{ func_total_score }}</h4>
         <h4 class="text-color">User Experience: {{ exp_total_score }}</h4>
         <hr class="my-4">
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Back to Dashboard</a>
+            <a class="btn btn-primary btn-lg" href="" role="button">Back to Dashboard</a>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}" role="button">Logout</a>
         </p>
     </div>
 </div>

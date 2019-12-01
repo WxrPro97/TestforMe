@@ -2,21 +2,38 @@
 
 ## Setup
 
-### Install and update using pip:
+### Python Dependencies (Debian/Ubuntu)
+You will need to install Python 3 and MySQL development headers and libraries in order to proceed:
+
+```bash
+sudo apt install python3 python-dev python3-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev python-pip default-libmysqlclient-dev
+```
+
+### Install using pip3:
 
 Flask:
 ```bash
-pip install -U Flask
+pip3 install -U Flask
 ```
 
 Bootstrap 4:
 ```bash
-pip install Flask-Bootstrap4
+pip3 install Flask-Bootstrap4
 ```
 
 RAKE-NLTK:
 ```bash
-pip install rake-nltk
+pip3 install rake-nltk
+```
+
+MySQL Client
+```bash
+pip3 install mysqlclient
+```
+
+Flask-MySQLdb
+```bash
+pip3 install flask-mysqldb
 ```
 
 ## Hosting

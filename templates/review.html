@@ -1,0 +1,50 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Review{% endblock %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='css/style.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-group" action="{{ url_for('user_result') }}" method="POST">
+                <div class="form-group">
+                    <label for="sel1">Select Testing Job:</label>
+                    <select class="form-control foreground" id="sel1" name="choice">
+                        {% for jobs in jobs %}
+
+                        <option>{{ jobs.name }}</option>
+
+                        {% endfor %}
+                    </select>
+                </div>
+                <br>
+                <label for="exampleFormControlTextarea1">The Installation Procedure?</label>
+                <textarea class="form-control foreground" id="exampleFormControlTextarea1" rows="3" name="installation"
+                    required="required" maxlength="280"></textarea>
+                <p class="text-right"><small>280 character limit.</small></p>
+                <br>
+                <label for="exampleFormControlTextarea1">The Performance?</label>
+                <textarea class="form-control foreground" id="exampleFormControlTextarea1" rows="8" name="performance"
+                    required="required" maxlength="280"></textarea>
+                <p class="text-right"><small>280 character limit.</small></p>
+                <br>
+                <label for="exampleFormControlTextarea1">The Functionality?</label>
+                <textarea class="form-control foreground" id="exampleFormControlTextarea1" rows="8" name="functionality"
+                    required="required" maxlength="280"></textarea>
+                <p class="text-right"><small>280 character limit.</small></p>
+                <br>
+                <label for="exampleFormControlTextarea1">The User Experience?</label>
+                <textarea class="form-control foreground" id="exampleFormControlTextarea1" rows="8" name="experience"
+                    required="required" maxlength="280"></textarea>
+                <p class="text-right"><small>280 character limit.</small></p>
+                <br>
+                <button class="btn btn-danger float-md-right btn-space">Cancel</button>
+                <button type="submit" class="btn btn-primary float-md-right btn-space">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
