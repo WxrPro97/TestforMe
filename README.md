@@ -41,10 +41,11 @@ pip3 install flask-mysqldb
 #### Hosting Locally
 ```
 if __name__ == "__main__":
-    app.run()
+    # Debug mode is useful to catch errors.
+    app.run(debug=true)
 ```
 
-#### Hosting on Server
+#### Hosting on AWS Ubuntu Server
 ```
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
