@@ -8,17 +8,22 @@
 {% block content %}
 <div class="container-fluid">
     <div class="jumbotron">
-        <h1 class="display-4 text-color">{{ username }}, <strong>you have scored:</strong></h1>
+        <h1 class="display-4 text-color text-center"> <a class="uname"> {{ username }}</a>, you have scored:</h1>
         <hr class="my-4">
-        <h4 class="text-color">You have selected: {{ choice }}</h4>
-        <h4 class="text-color">Installation: {{ install_total_score }}</h4>
-        <h4 class="text-color">Performance: {{ perf_total_score }}</h4>
-        <h4 class="text-color">Functionality: {{ func_total_score }}</h4>
-        <h4 class="text-color">User Experience: {{ exp_total_score }}</h4>
+        <h4 class="text-color text-center">You have selected: {{ choice }}</h4>
+        <h4 class="text-color text-center">Installation/Setup: {{ install_total_score }}</h4>
+        <h4 class="text-color text-center">Performance: {{ perf_total_score }}</h4>
+        <h4 class="text-color text-center">Functionality: {{ func_total_score }}</h4>
+        <h4 class="text-color text-center">User Experience: {{ exp_total_score }}</h4>
+        <h3 class="text-color text-center">Average: {{ avg }} </h3>
+        {{ success|safe }}
+        {{ error|safe }}
         <hr class="my-4">
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="" role="button">Back to Dashboard</a>
-            <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}" role="button">Logout</a>
+        <p class="lead text-center">
+            <a class="btn btn-primary btn-lg" href="{{ url_for('logout') }}" role="button">Back to Dashboard</a>
+            {% if error %}
+            <a class="btn btn-primary btn-lg" href="{{ url_for('user_form') }}" role="button">Try Again?</a>
+            {% endif %}
         </p>
     </div>
 </div>

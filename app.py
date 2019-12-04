@@ -72,12 +72,17 @@ def user_form():
 
 @app.route("/result", methods=['GET', 'POST'])
 def user_result():
+    success = ''
+    error = ''
     if 'loggedin' in session:
         # Choice section.
+        # Create variables for easy access
         choice = request.form['choice']
 
         # Performance section.
+        # Create variables for easy access.
         perf = request.form['performance']
+        # Add stopwords for english from NLTK, and all puntuation characters.
         r = Rake(stopwords=None, punctuations=[';', ',', '"', '/', "?"])
         # Extraction text from form.
         r.extract_keywords_from_sentences(perf)
@@ -89,7 +94,9 @@ def user_result():
         perf_total_score = sum(perf_score)
 
         # Installation section.
+        # Create variables for easy access
         install = request.form['installation']
+        # Add stopwords for english from NLTK, and all puntuation characters.
         r = Rake(stopwords=None, punctuations=[';', ',', '"', '/', "?"])
         # Extraction text from form.
         r.extract_keywords_from_sentences(install)
@@ -97,12 +104,14 @@ def user_result():
         install_score = str(r.get_ranked_phrases_with_scores())
         # Extract score (as float) from text (string).
         install_score = [float(s)
-                        for s in re.findall(r'-?\d+\.?\d*', install_score)]
+                         for s in re.findall(r'-?\d+\.?\d*', install_score)]
         # Get the sum of all the values extracted.
         install_total_score = sum(install_score)
 
         # Functionality section.
+        # Create variables for easy access
         func = request.form['functionality']
+        # Add stopwords for english from NLTK, and all puntuation characters.
         r = Rake(stopwords=None, punctuations=[';', ',', '"', '/', "?"])
         # Extraction text from form.
         r.extract_keywords_from_sentences(func)
@@ -114,7 +123,9 @@ def user_result():
         func_total_score = sum(func_score)
 
         # Experience section
+        # Create variables for easy access
         exp = request.form['experience']
+        # Add stopwords for english from NLTK, and all puntuation characters.
         r = Rake(stopwords=None, punctuations=[';', ',', '"', '/', "?"])
         # Extraction text from form.
         r.extract_keywords_from_sentences(exp)
@@ -125,11 +136,31 @@ def user_result():
         # Get the sum of all the values extracted.
         exp_total_score = sum(exp_score)
 
-        # # If the user is logged in show them the results page.
-        return render_template('result.html', perf_total_score=perf_total_score, install_total_score=install_total_score, func_total_score=func_total_score, exp_total_score=exp_total_score, username=session['username'], choice=choice)
-    
+        # Calculate the average of all the scores.
+        avg = (perf_total_score + install_total_score +
+               func_total_score + exp_total_score)/4
+
+        # Only add to database if average score is greater than 15.
+        if avg >= 15:
+            # Message to alert the user the review has been submitted.
+            success = '<hr class="my-4"><div class="alert alert-primary text-center" role="alert">Success! Review has been submitted</div>'
+            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            # Stage records to be inserted into database.
+            cursor.execute(
+                'INSERT INTO scores VALUES (NULL, %s, %s, %s, %s, %s, %s)', (perf_total_score, install_total_score, func_total_score, exp_total_score, avg, choice))
+            # Finalize and commit record to the database.
+            mysql.connection.commit()
+        else:
+            # Message to alert the user of poor score.
+            error = '<hr class="my-4"><div class="alert alert-warning text-center" role="alert">Warning! Poor Average, Please try again</div>'
+            
+
+        # If the user is logged in show them the results page.
+        return render_template('result.html', perf_total_score=perf_total_score, install_total_score=install_total_score, func_total_score=func_total_score, exp_total_score=exp_total_score, username=session['username'], choice=choice, success=success, error=error, avg=avg)
+
+    # If the user is not logged in then redirect the user back to the login page.
     return redirect(url_for('login'))
-    
+
 
 if __name__ == "__main__":
     # Generate random secret key (for extra protection).
