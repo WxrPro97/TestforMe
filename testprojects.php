@@ -1,10 +1,10 @@
-<?php include ('aserver.php') ?>
+<?php include ('testprojectssettings.php') ?>
 <?php 
   session_start(); 
 
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
-  	header('location: alogin.php');
+  	header('location: login.php');
   }
   ?>
 
@@ -64,16 +64,18 @@
 
                         <div class="bottom-border pb-3 mx-auto text-center">
 
-                            <a href="" class="text-white"> <strong><?php echo $_SESSION['username']; ?></strong></<strong></a>
+                            <a href="" class="text-white"> <strong><?php echo $_SESSION['username']; ?></strong>
+                                </<strong></a>
                         </div>
                         <li class="nav-item"><a href="adminanalytics.php" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                    class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics</a></li>
+                                    class="fas fa-home text-light fa-lg mr-3"></i>Analytics</a></li>
                         <li class="nav-item"><a href="testprojects.php" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                    class="fas fa-file-alt text-light fa-lg mr-3"></i>Test Projects</a></li>    
-                                     <li class="nav-item" name="logout"><a href="logout.php" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                    class="fas fa-file-alt text-light fa-lg mr-3"></i>Test Jobs</a></li>
+                        <li class="nav-item" name="logout"><a href="logout.php"
+                                class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                     class="fas fa-sign-out-alt text-light fa-lg mr-3"></i>LogOut</a></li>
 
-                                  
+
 
 
 
@@ -83,10 +85,10 @@
                         <!-- End of Sidebar-->
                     </div>
                     <!--Top nav Column-->
-                    <div class="col-xl-10 col-lg-9 col-md-8  ml-auto bg-dark fixed-top py-2 top-navbar" >
+                    <div class="col-xl-10 col-lg-9 col-md-8  ml-auto bg-dark fixed-top py-2 top-navbar">
                         <div class="row">
                             <div class="col-md-4">
-                                <h4 class="text-light text-uppercase mb-0">Analytics</h4>
+                                <h4 class="text-light text-uppercase mb-0">Review</h4>
                             </div>
                             <div class="col-md-5">
                                 <form>
@@ -94,9 +96,9 @@
                                 </form>
                             </div>
                             <div class="col-md-3">
-                               
 
-                                
+
+
                             </div>
                         </div>
                     </div>
@@ -110,6 +112,52 @@
         <!-- ml-auto mb-2 bg-light places button to left of page when shrunck margin buttom of toggle-->
     </nav>
     <!--Ending of Navbar-->
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Submit Review</h5>
+                    <hr class="my-4">
+
+                    <form action="testprojects.php" method="post">
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" name="company" class="form-control">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" name="product" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Test Type</label>
+                            <input type="text" name="testtype" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Software Type</label>
+                            <input type="text" name="softwaretype" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Deadline</label>
+                            <input type="text" name="deadline" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Link</label>
+                            <input type="text" name="link" class="form-control">
+                        </div>
+
+
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" name="submit"
+                            type="submit" value="submit">Submit</button>
+                        <hr class="my-4">
+                </div>
+
+
 
 
 </body>
