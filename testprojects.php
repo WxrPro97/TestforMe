@@ -138,12 +138,19 @@
 
                         <div class="form-group">
                             <label>Software Type</label>
-                            <input type="text" name="softwaretype" class="form-control">
+                            <select name="Software Type" class="custom-select">
+                                <option selected>Select test type</option>
+                                <option value="Alpha">Alpha</option>
+                                <option value="Beta">Beta</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label>Deadline</label>
-                            <input type="text" name="deadline" class="form-control">
+                            <div class="col-lg-78 text-center">
+                                <div id="success"></div><input class="form-control" type="date">
+                            </div>
+                        
                         </div>
 
                         <div class="form-group">
