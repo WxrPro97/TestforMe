@@ -144,7 +144,7 @@
 
                                             <div class="form-group">
                                                 <label>Test Type</label>
-                                                <select name="Test Type" class="custom-select">
+                                                <select name="testtype" class="custom-select">
                                                     <option selected>Select test type</option>
                                                     <option value="Alpha">Alpha</option>
                                                     <option value="Beta">Beta</option>
@@ -159,7 +159,7 @@
                                             <div class="form-group">
                                                 <label>Deadline</label>
                                                 <div class="col-lg-78 text-center">
-                                                    <div id="success"></div><input class="form-control" type="date">
+                                                    <div id="success"></div><input class="form-control" type="date" name="deadline">
                                                 </div>
                                             
                                             </div>

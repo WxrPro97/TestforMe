@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
   $deadline = mysqli_real_escape_string($db, $_POST['deadline']);
   $link = mysqli_real_escape_string($db, $_POST['link']);
 
-  $query = "INSERT INTO Review (company, product, testtype, softwaretype, deadline, link) 
+  $query = "INSERT INTO jobs (company, product, testtype, softwaretype, deadline, link) 
   			  VALUES('$company', '$product', '$testtype', '$softwaretype','$deadline','$link')";
   	mysqli_query($db, $query);
 

@@ -181,9 +181,7 @@
                                                 <td><?php echo $row[product];?></td>
                                                 <td><?php echo $row[testtype];?></td>
                                                 <td><?php echo $row[softwaretype];?></td>
-                                                <td><?php echo $row[deadline];?></td>
-                                                <!---<td><a href="https://www.google.com/drive/">Download</a></td> -->
-                                                <td><?php echo $row[link];?></td>
+                                                <td><?php echo $row[deadline];?></td>                                                <td><?php echo $row[link];?></td>
                                                 </tr>
                                                 <?php }?>
                                                 
