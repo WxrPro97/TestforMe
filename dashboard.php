@@ -66,9 +66,9 @@
 
                             <a href="" class="text-white"> <strong><?php echo $_SESSION['username']; ?></strong></<strong></a>
                         </div>
-                        <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                        <li class="nav-item"><a href="dashboard.php" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                     class="fas fa-home text-light fa-lg mr-3"></i>Dashboard</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                        <li class="nav-item"><a href="testjobs.php" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                     class="fas fa-file-alt text-light fa-lg mr-3"></i>Test Jobs</a></li>
                                      <li class="nav-item" name="logout"><a href="logout.php" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                     class="fas fa-sign-out-alt text-light fa-lg mr-3"></i>LogOut</a></li>
