@@ -118,8 +118,9 @@
                 <div class="col-xl-10 col-lg-9 col-md-9 ml-auto">
                     <div class="row">
                         <div class="col-12">
+
                             <div class="card shadow">
-                                <div class="card-header py-3">
+                                <div class="card-header py-6">
                                     <p class="text-primary m-0 font-weight-bold">Jobs Info</p>
                                 </div>
                                 <div class="row">
@@ -143,16 +144,16 @@
 
                                             <div class="form-group">
                                                 <label>Test Type</label>
-                                                <input type="text" name="testtype" class="form-control">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Software Type</label>
-                                                <select name="Software Type" class="custom-select">
+                                                <select name="Test Type" class="custom-select">
                                                     <option selected>Select test type</option>
                                                     <option value="Alpha">Alpha</option>
                                                     <option value="Beta">Beta</option>
                                                 </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Software Type</label>
+                                                <input Type="text" name="softwaretype" class="form-control">
                                             </div>
 
                                             <div class="form-group">
