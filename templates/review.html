@@ -9,10 +9,12 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
+            <!-- Submit form to python script (user_results). -->
             <form class="form-group" action="{{ url_for('user_result') }}" method="POST">
                 <div class="form-group">
                     <label for="sel1">Select Testing Job:</label>
-                    <select class="form-control foreground" id="sel1" name="choice">
+                    <!-- Loop through job names in database. -->
+                    <select class="form-control foreground" name="choice">
                         {% for jobs in jobs %}
 
                         <option>{{ jobs.name }}</option>
@@ -20,25 +22,25 @@
                         {% endfor %}
                     </select>
                 </div>
-                <br>
-                <label for="exampleFormControlTextarea1">The Installation/Setup Procedure?</label>
-                <textarea class="form-control foreground" id="exampleFormControlTextarea1" rows="6" name="installation"
+                <hr class="my-4">
+                <label>The Installation/Setup Procedure?</label>
+                <textarea class="form-control foreground" rows="6" name="installation"
                     required="required"></textarea>
-                <br>
-                <label for="exampleFormControlTextarea1">The Performance?</label>
-                <textarea class="form-control foreground" id="exampleFormControlTextarea1" rows="6" name="performance"
+                <hr class="my-4">
+                <label>The Performance?</label>
+                <textarea class="form-control foreground" rows="6" name="performance"
                     required="required"></textarea>
-                <br>
-                <label for="exampleFormControlTextarea1">The Functionality?</label>
-                <textarea class="form-control foreground" id="exampleFormControlTextarea1" rows="6" name="functionality"
+                <hr class="my-4">
+                <label>The Functionality?</label>
+                <textarea class="form-control foreground" rows="6" name="functionality"
                     required="required"></textarea>
-                <br>
-                <label for="exampleFormControlTextarea1">The User Experience?</label>
-                <textarea class="form-control foreground" id="exampleFormControlTextarea1" rows="6" name="experience"
+                <hr class="my-4">
+                <label>The User Experience?</label>
+                <textarea class="form-control foreground" rows="6" name="experience"
                     required="required"></textarea>
-                <br>
-                <button class="btn btn-danger float-md-right btn-space">Cancel</button>
-                <button type="submit" class="btn btn-primary float-md-right btn-space">Submit</button>
+                <hr class="my-4">
+                <a class="btn btn-danger float-md-right btn-space" href="{{ url_for('logout') }}" role="button">Cancel</a>
+                <button type="submit" class="btn btn-warning float-md-right btn-space">Submit</button>
             </form>
         </div>
     </div>

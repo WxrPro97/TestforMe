@@ -8,19 +8,64 @@
 {% block content %}
 <div class="container-fluid">
     <div class="jumbotron">
-        <h1 class="display-4 text-color text-center"> <a class="uname"> {{ username }}</a>, you have scored:</h1>
+        <!-- Display name of logged in user. -->
+        <h1 class="display-4 text-color text-center"><a class="uname">{{ username }}</a>, you have scored:</h1>
         <hr class="my-4">
-        <h4 class="text-color text-center">You have selected: {{ choice }}</h4>
-        <h4 class="text-color text-center">Installation/Setup: {{ install_total_score }}</h4>
-        <h4 class="text-color text-center">Performance: {{ perf_total_score }}</h4>
-        <h4 class="text-color text-center">Functionality: {{ func_total_score }}</h4>
-        <h4 class="text-color text-center">User Experience: {{ exp_total_score }}</h4>
-        <h3 class="text-color text-center">Average: {{ avg }} </h3>
+        <table class="table table-bordered table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col" class="text-center">Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Installation/Setup</th>
+                    <!-- Display total score for installation/setup. -->
+                    <td class="text-center"> {{ install_total_score }} </td>
+                </tr>
+                <tr>
+                    <th scope="row">Performance</th>
+                    <!-- Display total score for performance. -->
+                    <td class="text-center"> {{ perf_total_score }} </td>
+                </tr>
+                <tr>
+                    <th scope="row">Functionality</th>
+                    <!-- Display total score for functionality -->
+                    <td class="text-center"> {{ func_total_score }} </td>
+                </tr>
+                <tr>
+                    <th scope="row">User Experience</th>
+                    <!-- Display total score for user experience. -->
+                    <td class="text-center"> {{ exp_total_score }} </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr class="my-4">
+        <table class="table table-bordered table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Choice</th>
+                    <th scope="col" class="text-center">Average</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- Display the testing choice the user has selected. -->
+                    <th scope="row">{{ choice }}</th>
+                    <!-- Display the average score. -->
+                    <td class="text-center"> {{ avg }} </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Display success message if the user has scored above average. -->
         {{ success|safe }}
+        <!-- Display error message if the user has scored below average. -->
         {{ error|safe }}
         <hr class="my-4">
         <p class="lead text-center">
             <a class="btn btn-primary btn-lg" href="{{ url_for('logout') }}" role="button">Back to Dashboard</a>
+            <!-- Display button if the user has scored below average to retry the test. -->
             {% if error %}
             <a class="btn btn-primary btn-lg" href="{{ url_for('user_form') }}" role="button">Try Again?</a>
             {% endif %}

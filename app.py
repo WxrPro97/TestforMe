@@ -3,6 +3,8 @@ from flask_bootstrap import Bootstrap
 from rake_nltk import Metric, Rake
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
+import hashlib
+from hashlib import md5
 import re
 import os
 
@@ -25,10 +27,12 @@ def login():
         # Request variables from form.
         username = request.form['username']
         password = request.form['password']
+        # Convert password to MD5 hash.
+        hashed_password = hashlib.md5(password.encode('utf-8')).hexdigest()
         # Check if account exists in MySQL Database.
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute(
-            'SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password))
+            'SELECT * FROM accounts WHERE username = %s AND password = %s', (username, hashed_password))
         # Fetch one record and return result.
         account = cursor.fetchone()
         # Check if user exists in the database.
@@ -82,8 +86,8 @@ def user_result():
         # Performance section.
         # Create variables for easy access.
         perf = request.form['performance']
-        # Add stopwords for english from NLTK, and all puntuation characters.
-        r = Rake(stopwords=None, punctuations=[';', ',', '"', '/', "?"])
+        # Use all stopwords for english from NLTK, and all puntuation characters.
+        r = Rake()
         # Extraction text from form.
         r.extract_keywords_from_sentences(perf)
         # Convert the extraction to string.
@@ -96,8 +100,8 @@ def user_result():
         # Installation section.
         # Create variables for easy access
         install = request.form['installation']
-        # Add stopwords for english from NLTK, and all puntuation characters.
-        r = Rake(stopwords=None, punctuations=[';', ',', '"', '/', "?"])
+        # Use all stopwords for english from NLTK, and all puntuation characters.
+        r = Rake()
         # Extraction text from form.
         r.extract_keywords_from_sentences(install)
         # Convert the extraction to string.
@@ -111,8 +115,8 @@ def user_result():
         # Functionality section.
         # Create variables for easy access
         func = request.form['functionality']
-        # Add stopwords for english from NLTK, and all puntuation characters.
-        r = Rake(stopwords=None, punctuations=[';', ',', '"', '/', "?"])
+        # Use all stopwords for english from NLTK, and all puntuation characters.
+        r = Rake()
         # Extraction text from form.
         r.extract_keywords_from_sentences(func)
         # Convert the extraction to string.
@@ -125,8 +129,8 @@ def user_result():
         # Experience section
         # Create variables for easy access
         exp = request.form['experience']
-        # Add stopwords for english from NLTK, and all puntuation characters.
-        r = Rake(stopwords=None, punctuations=[';', ',', '"', '/', "?"])
+        # Use all stopwords for english from NLTK, and all puntuation characters.
+        r = Rake()
         # Extraction text from form.
         r.extract_keywords_from_sentences(exp)
         # Convert the extraction to string.
@@ -152,8 +156,8 @@ def user_result():
             mysql.connection.commit()
         else:
             # Message to alert the user of poor score.
-            error = '<hr class="my-4"><div class="alert alert-warning text-center" role="alert">Warning! Poor Average, Please try again</div>'
-            
+            error = '<hr class="my-4"><div class="alert alert-danger text-center" role="alert">Warning! Poor Average, Please try again</div>'
+
 
         # If the user is logged in show them the results page.
         return render_template('result.html', perf_total_score=perf_total_score, install_total_score=install_total_score, func_total_score=func_total_score, exp_total_score=exp_total_score, username=session['username'], choice=choice, success=success, error=error, avg=avg)
