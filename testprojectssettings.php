@@ -6,6 +6,7 @@ session_start();
 // connect to the database
 $db = mysqli_connect('mysql.hostinger.com', 'u605620843_root', 'testforme123', 'u605620843_TestForMe');
 
+
 if (isset($_POST['submit'])) {
   // receive all input values from the form
   $company = mysqli_real_escape_string($db, $_POST['company']);
