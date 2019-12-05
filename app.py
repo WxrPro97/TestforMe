@@ -5,6 +5,7 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import hashlib
 from hashlib import md5
+from statistics import mean
 import re
 import os
 
@@ -13,10 +14,10 @@ Bootstrap(app)
 mysql = MySQL(app)
 
 # Database information for connecting to local/remote database.
-app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_HOST'] = ''
+app.config['MYSQL_USER'] = ''
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'pythonlogin'
+app.config['MYSQL_DB'] = ''
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -29,18 +30,18 @@ def login():
         password = request.form['password']
         # Convert password to MD5 hash.
         hashed_password = hashlib.md5(password.encode('utf-8')).hexdigest()
-        # Check if account exists in MySQL Database.
+        # Check if user exists in MySQL Database.
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute(
-            'SELECT * FROM accounts WHERE username = %s AND password = %s', (username, hashed_password))
+            'SELECT * FROM users WHERE username = %s AND password = %s', (username, hashed_password))
         # Fetch one record and return result.
-        account = cursor.fetchone()
+        user = cursor.fetchone()
         # Check if user exists in the database.
-        if account:
+        if user:
             # Create session data (Can be accessed in other routes).
             session['loggedin'] = True
-            session['id'] = account['id']
-            session['username'] = account['username']
+            session['id'] = user['id']
+            session['username'] = user['username']
             # Redirect to review page.
             return redirect(url_for('user_form'))
         else:
@@ -140,24 +141,30 @@ def user_result():
         # Get the sum of all the values extracted.
         exp_total_score = sum(exp_score)
 
-        # Calculate the average of all the scores.
-        avg = (perf_total_score + install_total_score +
-               func_total_score + exp_total_score)/4
+        # Calculate the average (mean) of all the scores.
+        lst = [perf_total_score, install_total_score,
+               func_total_score, exp_total_score]
+        avg = mean(lst)
 
         # Only add to database if average score is greater than 15.
         if avg >= 15:
             # Message to alert the user the review has been submitted.
             success = '<hr class="my-4"><div class="alert alert-primary text-center" role="alert">Success! Review has been submitted</div>'
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-            # Stage records to be inserted into database.
+            # Stage records (scores) to be inserted into database.
             cursor.execute(
-                'INSERT INTO scores VALUES (NULL, %s, %s, %s, %s, %s, %s)', (perf_total_score, install_total_score, func_total_score, exp_total_score, avg, choice))
+                'INSERT INTO reviews VALUES (NULL, %s, %s, %s, %s, %s, %s, %s)', (perf_total_score, install_total_score, func_total_score, exp_total_score, avg, choice, session['id']))
+            # Finalize and commit record to the database.
+            mysql.connection.commit()
+
+            # Stage records (text from form) to be inserted into database.
+            cursor.execute('INSERT INTO reviews_text VALUES (NULL, %s, %s, %s, %s, %s, %s)',
+                           (perf, install, func, exp, choice, session['id']))
             # Finalize and commit record to the database.
             mysql.connection.commit()
         else:
             # Message to alert the user of poor score.
             error = '<hr class="my-4"><div class="alert alert-danger text-center" role="alert">Warning! Poor Average, Please try again</div>'
-
 
         # If the user is logged in show them the results page.
         return render_template('result.html', perf_total_score=perf_total_score, install_total_score=install_total_score, func_total_score=func_total_score, exp_total_score=exp_total_score, username=session['username'], choice=choice, success=success, error=error, avg=avg)
