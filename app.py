@@ -66,7 +66,7 @@ def user_form():
     if 'loggedin' in session:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         # Select the table and required values.
-        cursor.execute('SELECT name FROM jobs')
+        cursor.execute('SELECT product FROM jobs')
         # Fetch all results from the table.
         jobs = cursor.fetchall()
         # If the user is logged in show them the review page.
