@@ -16,7 +16,7 @@
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/style.css" rel="stylesheet">
-    <title>Document</title>
+    <title>TestForMe</title>
 </head>
 <body data-spy="scroll" data-target="#navbarResponsive">
         <!--Main Navigation-->
@@ -378,7 +378,7 @@
                             <a href="" class="teal-text">
                                 <h6 class="pb-1"><i class="fa fa-heart"></i><strong> What we do! </strong></h6>
                             </a>
-                            <h4 class="mb-3"><strong>Whats NewA.</strong></h4>
+                            <h4 class="mb-3"><strong>Whats New.</strong></h4>
                             <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id
                                 quod maxime
                                 placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut
