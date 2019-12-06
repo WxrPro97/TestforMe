@@ -3,7 +3,7 @@
 {% block styles %}
 {{super()}}
 <link rel="stylesheet" href="{{url_for('.static', filename='css/style.css')}}">
-<link rel="icon" href="{{url_for('.static', filename='img/python-powered.png')}}">
+<link rel="icon" href="{{url_for('.static', filename='img/python_logo.png')}}">
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
             <!-- Submit form to python script (user_results). -->
             <form class="form-group" action="{{ url_for('user_result') }}" method="POST">
                 <div class="form-group">
-                    <label>Select Testing Job:</label>
+                    <h1>You have selected: {{ jobData }}</h1>
                     <!-- Loop through job names in database. -->
                     <select class="form-control foreground" name="choice">
                         {% for jobs in jobs %}

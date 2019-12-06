@@ -3,14 +3,15 @@
 {% block styles %}
 {{super()}}
 <link rel="stylesheet" href="{{url_for('.static', filename='css/style.css')}}">
-<link rel="icon" href="{{url_for('.static', filename='img/python-powered.png')}}">
+<link rel="icon" href="{{url_for('.static', filename='img/python_logo.png')}}">
 {% endblock %}
 
 {% block content %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="display-4 text-color text-center">Welcome <a class="uname">{{ username }}</a>, please choose a product to review</h1>
+            <h1 class="display-4 text-color text-center">Welcome <a class="uname">{{ username }}</a>, please choose a
+                product to review</h1>
             <hr class="my-4">
             <table class="table table-bordered table-dark table-hover">
                 <thead>
@@ -25,17 +26,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for jobs in jobs %}
                     <tr>
-                        {% for jobs in jobs %}
                         <td>{{ jobs.product }}</td>
                         <td>{{ jobs.company}}</td>
                         <td>{{ jobs.testtype }}</td>
                         <td>{{ jobs.softwaretype }}</td>
                         <td>{{ jobs.deadline }}</td>
                         <td><a target="_blank" href="{{ jobs.link }}">Product Link</a></td>
-                        <td><a href="{{ url_for('user_form') }}">Click Here!</a></td>
-                        {% endfor %}
+                        <td><a href="{{ url_for('user_form', jobData=jobs.product) }}">Click Here!</a></td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

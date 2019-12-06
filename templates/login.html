@@ -3,7 +3,7 @@
 {% block styles %}
 {{super()}}
 <link rel="stylesheet" href="{{url_for('.static', filename='css/login.css')}}">
-<link rel="icon" href="{{url_for('.static', filename='img/python-powered.png')}}">
+<link rel="icon" href="{{url_for('.static', filename='img/python_logo.png')}}">
 {% endblock %}
 
 {% block content %}
@@ -25,10 +25,14 @@
         <div class="msg text-center"> {{ msg }} </div>
     </form>
     <br>
-    <div>
-        <img class="img-container" src="{{url_for('.static', filename='img/python_powered.png')}}" alt="python-powered">
-        <br>
-        <img class="img-container" src="{{url_for('.static', filename='img/flask_logo.png')}}" alt="python-powered">
+    <div class="card">
+        <div class="card-body">
+            <img class="img-container" src="{{url_for('.static', filename='img/python_powered.png')}}"
+                alt="python-powered">
+        </div>
     </div>
+</div>
+<div class="login-form">
+
 </div>
 {% endblock %}
