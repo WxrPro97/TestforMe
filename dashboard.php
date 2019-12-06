@@ -110,64 +110,7 @@
         <!-- ml-auto mb-2 bg-light places button to left of page when shrunck margin buttom of toggle-->
     </nav>
     <!--Ending of Navbar-->
-     <section>
-           <div class="container-fluid">
-               <div class="row mb-5">
-                   <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
-                       <div class="row">
-                           
-                                <div class="col-12">
-                                        <h3 class="text-dark mb-4">Review Score
-                                        </h3>
-                                        <div class="card shadow">
-                                            <div class="card-header py-3">
-                                                <p class="text-primary m-0 font-weight-bold">Review Score</p>
-                                            </div>
-                                            <div class="card-body">
-                                                    <h4 class="small font-weight-bold">
-                                                            Server migration
-                                                            <span class="float-right">20%</span>
-                                                        </h4>
-                                                        <div class="progress mb-4">
-                                                            <div class="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-                                                               <span class="sr-only">20%</span>
-                                                           </div>                         
-                                                        </div>
-                                                        <h4 class="small font-weight-bold">
-                                                            Server migration
-                                                            <span class="float-right">40%</span>
-                                                        </h4>
-                                                        <div class="progress mb-4">
-                                                            <div class="progress-bar bg-success" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                                                                <span class="sr-only">40%</span>
-                                                            </div>                         
-                                                        </div>
-                                                        <h4 class="small font-weight-bold">
-                                                            Tracking
-                                                            <span class="float-right">60%</span>
-                                                        </h4>
-                                                        <div class="progress mb-4">
-                                                            <div class="progress-bar bg-warning" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                                                <span class="sr-only">60%</span>
-                                                            </div>
-                                                        </div>
-                                                        <h4 class="small font-weight-bold">
-                                                            Database
-                                                            <span class="float-right">80%</span>
-                                                        </h4>
-                                                        <div class="progress md-4">
-                                                            <div class="progress-bar bg-primary" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%";>
-                                                                <span class="sr-only">80%</span>
-                                                            </div>
-                                                        </div>
-                                        </div>
-                                    </div> 
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </section>
+    
 
 </body>
 
