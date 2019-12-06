@@ -1,3 +1,7 @@
+body {
+    background-color: #2980b9;
+  }
+
 .login-form {
     width: 340px;
     margin: 50px auto;
@@ -18,4 +22,11 @@
 .btn {        
     font-size: 15px;
     font-weight: bold;
+}
+
+.img-container {
+    display: block;
+    margin: auto;
+    width: 200px;
+    height: 80px;
 }
