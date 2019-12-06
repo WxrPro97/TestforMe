@@ -1,5 +1,5 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}Home{% endblock %}
+{% block title %}Review{% endblock %}
 {% block styles %}
 {{super()}}
 <link rel="stylesheet" href="{{url_for('.static', filename='css/style.css')}}">
@@ -10,38 +10,34 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="display-4 text-color text-center">Welcome <a class="uname">{{ username }}</a>, please choose a
-                product to review!</h1>
+            <h1 class="display-4 text-color text-center">Welcome <a class="uname">{{ username }}</a>, please choose a product to review</h1>
             <hr class="my-4">
-            <form class="form-group" action="{{ url_for('user_result') }}" method="POST">
-                <table class="table table-bordered table-dark table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Product</th>
-                            <th scope="col">Company</th>
-                            <th scope="col">Test Type</th>
-                            <th scope="col">Software Type</th>
-                            <th scope="col">Deadline</th>
-                            <th scope="col">Link</th>
-                            <th scope="col">Review</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            {% for jobs in jobs %}
-                            <td>{{ jobs.product }}</td>
-                            <td>{{ jobs.company}}</td>
-                            <td>{{ jobs.testtype }}</td>
-                            <td>{{ jobs.softwaretype }}</td>
-                            <td>{{ jobs.deadline }}</td>
-                            <td><a target="_blank" href="{{ jobs.link }}">Product Link</a></td>
-                            <td><a name="selection" href="{{ url_for('user_form') }}">Click Here!</a></td>
-                            {% endfor %}
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-            <a class="btn btn-primary btn-lg" href="{{ url_for('logout') }}" role="button">Logout</a>
+            <table class="table table-bordered table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Company</th>
+                        <th scope="col">Test Type</th>
+                        <th scope="col">Software Type</th>
+                        <th scope="col">Deadline</th>
+                        <th scope="col">Link</th>
+                        <th scope="col">Review</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for jobs in jobs %}
+                        <td>{{ jobs.product }}</td>
+                        <td>{{ jobs.company}}</td>
+                        <td>{{ jobs.testtype }}</td>
+                        <td>{{ jobs.softwaretype }}</td>
+                        <td>{{ jobs.deadline }}</td>
+                        <td><a target="_blank" href="{{ jobs.link }}">Product Link</a></td>
+                        <td><a href="{{ url_for('user_form') }}">Click Here!</a></td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
