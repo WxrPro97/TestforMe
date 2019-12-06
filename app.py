@@ -19,8 +19,21 @@ app.config['MYSQL_USER'] = ''
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = ''
 
+@app.route('/')
+def index():
+    if 'loggedin' in session:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        # Select all values from table.
+        cursor.execute('SELECT * FROM jobs')
+        # Fetch all results from the table.
+        jobs = cursor.fetchall()
+        # Show index page with jobs from database.
+        return render_template('index.html', username=session['username'], jobs=jobs)
+    # If the user is not logged in then redirect the user back to the login page.
+    return redirect(url_for('login'))
 
-@app.route('/', methods=['GET', 'POST'])
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     msg = ''
     # Check if the "username" and "password" POST requests exist (from the user submitted form).
@@ -43,12 +56,12 @@ def login():
             session['id'] = user['id']
             session['username'] = user['username']
             # Redirect to review page.
-            return redirect(url_for('user_form'))
+            return redirect(url_for('index'))
         else:
             # Message to alert that user doesnt exist or username/password is incorrect.
             msg = 'Incorrect username/password!'
     # Show the login form with message (if login is unsuccessful w/ error message).
-    return render_template('index.html', msg=msg)
+    return render_template('login.html', msg=msg)
 
 
 @app.route("/logout")
