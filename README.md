@@ -38,16 +38,16 @@ pip3 install flask-mysqldb
 
 ## Hosting
 
-#### Hosting Locally
+#### Hosting Locally (w/ debug mode)
 ```
 if __name__ == "__main__":
     # Debug mode is useful to catch errors.
     app.run(debug=true)
 ```
 
-#### Hosting on AWS Ubuntu Server
+#### Hosting on AWS Ubuntu Server (w/ debug mode)
 ```
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=80)
+    app.run(host="0.0.0.0", port=80, debug=true)
 ```
 Make sure HTTP port 80 is open on your server.
