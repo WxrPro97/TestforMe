@@ -6,7 +6,7 @@
 You will need to install Python 3 and MySQL development headers and libraries in order to proceed:
 
 ```bash
-sudo apt install python3 python-dev python3-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev python-pip default-libmysqlclient-dev
+sudo apt install python3 python-dev python3-dev python3-pip build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev python-pip default-libmysqlclient-dev
 ```
 
 ### Install using pip3:
