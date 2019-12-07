@@ -6,6 +6,10 @@
   	$_SESSION['msg'] = "You must log in first";
   	header('location: alogin.php');
   }
+
+  
+
+  
   ?>
 
 <!DOCTYPE html>
@@ -122,14 +126,26 @@
                   <div class="d-flex justify-content-between">
                     <i class="fas fa-shopping-cart fa-3x text-warning"></i>
                     <div class="text-right text-secondary">
-                      <h5>Sales</h5>
-                      <h3>$135,000</h3>
+                    <h5>Tests Submitted</h5>
+                      
+                    <?php
+
+                 
+                    $query = "SELECT * FROM jobs";
+                    $select_all_jobs = mysqli_query($db, $query);
+                    $job_counts = mysqli_num_rows($select_all_jobs);
+
+                    echo "<div class = 'huge'><h3>{$job_counts}</h3></div>"
+
+                    ?>
+
+
                     </div>
                   </div>
                 </div>
                 <div class="card-footer text-secondary">
                   <i class="fas fa-sync mr-3"></i>
-                  <span>Updated Now</span>
+                  
                 </div>
               </div>
             </div>
