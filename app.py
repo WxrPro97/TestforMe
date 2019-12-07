@@ -19,6 +19,7 @@ app.config['MYSQL_USER'] = ''
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = ''
 
+
 @app.route('/')
 def index():
     if 'loggedin' in session:
@@ -74,8 +75,8 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route("/review")
-def user_form():
+@app.route("/review/<jobData>")
+def user_form(jobData):
     if 'loggedin' in session:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         # Select the table and required values.
@@ -83,7 +84,7 @@ def user_form():
         # Fetch all results from the table.
         jobs = cursor.fetchall()
         # If the user is logged in show them the review page.
-        return render_template('review.html', username=session['username'], jobs=jobs)
+        return render_template('review.html', username=session['username'], jobs=jobs, jobData=jobData)
     # If the user is not logged in then redirect the user back to the login page.
     return redirect(url_for('login'))
 
@@ -93,9 +94,12 @@ def user_result():
     success = ''
     error = ''
     if 'loggedin' in session:
-        # Choice section.
-        # Create variables for easy access
+        # Request variables from form.
         choice = request.form['choice']
+        install_rating = request.form['install_rating']
+        perf_rating = request.form['perf_rating']
+        func_rating = request.form['func_rating']
+        exp_rating = request.form['exp_rating']
 
         # Performance section.
         # Create variables for easy access.
@@ -175,12 +179,18 @@ def user_result():
                            (perf, install, func, exp, choice, session['id']))
             # Finalize and commit record to the database.
             mysql.connection.commit()
+
+            # Stage records (user rating for product) to be inserted into database.
+            cursor.execute('INSERT INTO product_rating VALUES (NULL, %s, %s, %s, %s, %s, %s)',
+                           (perf_rating, install_rating, func_rating, exp_rating, choice, session['id']))
+            # Finalize and commit record to the database.
+            mysql.connection.commit()
         else:
             # Message to alert the user of poor score.
             error = '<hr class="my-4"><div class="alert alert-danger text-center" role="alert">Warning! Poor Average, Please try again</div>'
 
         # If the user is logged in show them the results page.
-        return render_template('result.html', perf_total_score=perf_total_score, install_total_score=install_total_score, func_total_score=func_total_score, exp_total_score=exp_total_score, username=session['username'], choice=choice, success=success, error=error, avg=avg)
+        return render_template('result.html', perf_total_score=perf_total_score, install_total_score=install_total_score, func_total_score=func_total_score, exp_total_score=exp_total_score, username=session['username'], choice=choice, success=success, error=error, avg=avg, install_rating=install_rating, perf_rating=perf_rating, func_rating=func_rating, exp_rating=exp_rating)
 
     # If the user is not logged in then redirect the user back to the login page.
     return redirect(url_for('login'))
