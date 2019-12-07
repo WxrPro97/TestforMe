@@ -13,13 +13,13 @@
             <!-- Submit form to python script (user_results). -->
             <form class="form-group" action="{{ url_for('user_result') }}" method="POST">
                 <div class="form-group">
-                    <h1>You have selected: {{ jobData }}</h1>
+                    <label>You have selected:</label>
                     <!-- Loop through job names in database. -->
                     <select class="form-control foreground" name="choice">
                         {% for jobs in jobs %}
-
+                        {% if jobs.product == jobData %}
                         <option>{{ jobs.product }}</option>
-
+                        {% endif %}
                         {% endfor %}
                     </select>
                 </div>
@@ -28,56 +28,60 @@
                 <textarea class="form-control foreground" rows="6" name="installation" required="required"></textarea>
                 <div class="form-group">
                     <br>
-                    <label>User Rating:</label>
                     <select class="form-control foreground col-md-1" name="install_rating">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
                         <option>5</option>
+                        <option>4</option>
+                        <option>3</option>
+                        <option>2</option>
+                        <option>1</option>
                     </select>
+                    <label><small>User Rating (Very Satisfied = 5, Satisfied = 4, Neutral = 3, Dissatisfied = 2, Very
+                            Dissatisfied = 1)</small></label>
                 </div>
                 <hr class="my-4">
                 <label>The Performance?</label>
                 <textarea class="form-control foreground" rows="6" name="performance" required="required"></textarea>
                 <div class="form-group">
                     <br>
-                    <label>User Rating:</label>
                     <select class="form-control foreground col-md-1" name="perf_rating">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
                         <option>5</option>
+                        <option>4</option>
+                        <option>3</option>
+                        <option>2</option>
+                        <option>1</option>
                     </select>
+                    <label><small>User Rating (Very Satisfied = 5, Satisfied = 4, Neutral = 3, Dissatisfied = 2, Very
+                            Dissatisfied = 1)</small></label>
                 </div>
                 <hr class="my-4">
                 <label>The Functionality?</label>
                 <textarea class="form-control foreground" rows="6" name="functionality" required="required"></textarea>
                 <div class="form-group">
                     <br>
-                    <label>User Rating:</label>
                     <select class="form-control foreground col-md-1" name="func_rating">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
                         <option>5</option>
+                        <option>4</option>
+                        <option>3</option>
+                        <option>2</option>
+                        <option>1</option>
                     </select>
+                    <label><small>User Rating (Very Satisfied = 5, Satisfied = 4, Neutral = 3, Dissatisfied = 2, Very
+                            Dissatisfied = 1)</small></label>
                 </div>
                 <hr class="my-4">
                 <label>The User Experience?</label>
                 <textarea class="form-control foreground" rows="6" name="experience" required="required"></textarea>
                 <div class="form-group">
                     <br>
-                    <label>User Rating:</label>
                     <select class="form-control foreground col-md-1" name="exp_rating">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
                         <option>5</option>
+                        <option>4</option>
+                        <option>3</option>
+                        <option>2</option>
+                        <option>1</option>
                     </select>
+                    <label><small>User Rating (Very Satisfied = 5, Satisfied = 4, Neutral = 3, Dissatisfied = 2, Very
+                            Dissatisfied = 1)</small></label>
                 </div>
                 <hr class="my-4">
                 <a class="btn btn-danger float-md-right btn-space" href="{{ url_for('logout') }}"

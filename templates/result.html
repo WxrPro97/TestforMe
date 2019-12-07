@@ -17,6 +17,7 @@
                 <tr>
                     <th scope="col">Category</th>
                     <th scope="col" class="text-center">Score</th>
+                    <th scope="col" class="text-center">Rating</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,21 +25,25 @@
                     <th scope="row">Installation/Setup</th>
                     <!-- Display total score for installation/setup. -->
                     <td class="text-center"> {{ install_total_score }} </td>
+                    <td class="text-center"> {{ install_rating }} </td>
                 </tr>
                 <tr>
                     <th scope="row">Performance</th>
                     <!-- Display total score for performance. -->
                     <td class="text-center"> {{ perf_total_score }} </td>
+                    <td class="text-center"> {{ perf_rating }} </td>
                 </tr>
                 <tr>
                     <th scope="row">Functionality</th>
                     <!-- Display total score for functionality -->
                     <td class="text-center"> {{ func_total_score }} </td>
+                    <td class="text-center"> {{ func_rating }} </td>
                 </tr>
                 <tr>
                     <th scope="row">User Experience</th>
                     <!-- Display total score for user experience. -->
                     <td class="text-center"> {{ exp_total_score }} </td>
+                    <td class="text-center"> {{ exp_rating }} </td>
                 </tr>
             </tbody>
         </table>
@@ -68,7 +73,7 @@
             <a class="btn btn-primary btn-lg" href="{{ url_for('logout') }}" role="button">Back to Dashboard</a>
             <!-- Display button if the user has scored below average to retry the test. -->
             {% if error %}
-            <a class="btn btn-primary btn-lg" href="{{ url_for('user_form') }}" role="button">Try Again?</a>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('user_form', jobData=choice) }}" role="button">Try Again?</a>
             {% endif %}
         </p>
     </div>
