@@ -48,6 +48,7 @@ if __name__ == "__main__":
 #### Hosting on AWS Ubuntu Server (w/ debug mode)
 ```
 if __name__ == "__main__":
+    # Debug mode is useful to catch errors.
     app.run(host="0.0.0.0", port=80, debug=true)
 ```
 Make sure HTTP port 80 is open on your server.
