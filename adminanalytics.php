@@ -138,6 +138,7 @@
                     echo "<div class = 'huge'><h3>{$job_counts}</h3></div>"
 
                     ?>
+                    
 
 
                     </div>
@@ -155,14 +156,45 @@
                   <div class="d-flex justify-content-between">
                     <i class="fas fa-money-bill-alt fa-3x text-success"></i>
                     <div class="text-right text-secondary">
-                      <h5>Expenses</h5>
-                      <h3>$39,000</h3>
+                      <h5>Online Users</h5>
+
+
+                      <?php
+                      $session = session_id();
+                      $time = time();
+                      $time_out_in_seconds = 60;
+                      $time_out = $time - $time_out_in_seconds;
+
+                      $query = "SELECT * FROM users_online WHERE session = '$session'";
+                      $send_query = mysqli_query($db, $query);
+                      $count = mysqli_num_rows($send_query);
+
+                      if($count == NULL){
+                        mysqli_query($db, "INSERT INTO users_online(session, time)VALUES('$session','$time')");
+                      }
+                      else {
+                        mysqli_query($db, "UPDATE users_online SET time = '$time' WHERE session = '$session'");
+
+                      }
+                      $users_online_query = mysqli_query($db, "SELECT * FROM users_online WHERE time > '$time_out");
+                      $count_user = mysqli_num_rows($users_online_query);
+                      
+
+
+                        ?>
+                        <h3>
+                        <?php echo $count_user; ?>
+                        
+                        </h3>
+                      
+
+
                     </div>
                   </div>
                 </div>
                 <div class="card-footer text-secondary">
                   <i class="fas fa-sync mr-3"></i>
-                  <span>Updated Now</span>
+                  
                 </div>
               </div>
             </div>
@@ -172,34 +204,20 @@
                   <div class="d-flex justify-content-between">
                     <i class="fas fa-users fa-3x text-info"></i>
                     <div class="text-right text-secondary">
-                      <h5>Users</h5>
-                      <h3>15,000</h3>
+                      <h5>Average Grade</h5>
+                        
+
+
                     </div>
                   </div>
                 </div>
                 <div class="card-footer text-secondary">
                   <i class="fas fa-sync mr-3"></i>
-                  <span>Updated Now</span>
+                  
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-sm-6 p-2">
-              <div class="card card-common">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <i class="fas fa-chart-line fa-3x text-danger"></i>
-                    <div class="text-right text-secondary">
-                      <h5>Visitors</h5>
-                      <h3>45,000</h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer text-secondary">
-                  <i class="fas fa-sync mr-3"></i>
-                  <span>Updated Now</span>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
